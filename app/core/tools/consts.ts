@@ -29,6 +29,7 @@ export const SHEKE = asAssetsPath('tools-icon/sheke.jpg')
 export const BIO = asAssetsPath('tools-icon/biography.jpg')
 export const SCIENCE = asAssetsPath('tools-icon/science.jpg')
 export const SIGN_UP = asAssetsPath('demo-jpg/sign-up.jpg')
+export const EXIT_ICON = asAssetsPath('tools-icon/exit.svg')
 
 /** 暗色风格托盘图标 (仅 macOS) */
 export const TRAY_ICON_DARK = asAssetsPath('tray-icon/tray-icon-dark.png')
