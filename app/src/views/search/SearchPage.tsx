@@ -143,13 +143,15 @@ export default class SearchPage extends React.Component<SearchProps, SearchState
         loading: true,
       })
 
-      axios.get('https://libgen-user.herokuapp.com/?v=' + value + '&page=1&size=24').then((resData: any) => {
-        console.log(resData)
-        this.setState({
-          resData: resData.data,
-          loading: false,
+      axios
+        .get('https://libgen-user.herokuapp.com/?v=' + value.replace(' ', '') + '&page=1&size=24')
+        .then((resData: any) => {
+          console.log(resData)
+          this.setState({
+            resData: resData.data,
+            loading: false,
+          })
         })
-      })
     } catch (err) {}
   }
 
