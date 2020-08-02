@@ -283,6 +283,7 @@ export default class Details extends React.Component<DetailsProps, DetailsState>
 
     const address = this.state.data.address
     const play = <PlayList adds={address} cols={6}></PlayList>
+    console.log(address)
     $tools.getGlobalStore().set('play-list', this.state.data.address)
     const domain =
       process.platform == 'darwin'

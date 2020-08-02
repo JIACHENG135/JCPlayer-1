@@ -18,23 +18,31 @@ export default class PlayList extends React.Component<BookRowItemProps> {
     let playcol: Array<any>
     const { adds, cols } = this.props
     const playarea = new Array<any>()
-    playcol = new Array<any>()
-    let ct = 0
-    adds.map((add: any, ind: number) => {
-      if ((ind + 1) % (cols + 1) != 0) {
-        playcol.push(add)
-      } else {
-        if (playcol.length > 0) {
-          playarea.push(
-            <PlayRow key={uuidv4()} items={playcol} cols={Math.floor(24 / cols)} start={ct}></PlayRow>
-          )
-        }
-        playcol = new Array<any>()
-        ct = ct + cols
-      }
-    })
-    if (playcol.length > 0) {
-      playarea.push(<PlayRow key={uuidv4()} items={playcol} cols={Math.floor(24 / cols)} start={ct}></PlayRow>)
+
+    const ct = Math.floor(adds.length / cols)
+    let i = 0
+    while (i < ct) {
+      console.log(adds.slice(i * cols, (i + 1) * cols))
+      playarea.push(
+        <PlayRow
+          key={uuidv4()}
+          items={adds.slice(i * cols, (i + 1) * cols)}
+          cols={Math.floor(24 / cols)}
+          start={i * cols}
+        ></PlayRow>
+      )
+      i += 1
+    }
+
+    if (i * cols < adds.length) {
+      playarea.push(
+        <PlayRow
+          key={uuidv4()}
+          items={adds.slice(i * cols)}
+          cols={Math.floor(24 / cols)}
+          start={i * cols}
+        ></PlayRow>
+      )
     }
 
     return <div className="play-row-container">{playarea}</div>
